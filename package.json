@@ -1,6 +1,7 @@
 {
   "name": "ig-backend",
   "version": "1.0.0",
+  "description": "Backend para flujo OAuth de Instagram",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
