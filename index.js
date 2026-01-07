@@ -1,6 +1,7 @@
 // index.js
 const express = require('express');
 const axios = require('axios');
+
 const app = express();
 
 // Ruta para iniciar autorización en Instagram
@@ -26,7 +27,11 @@ app.get('/ig/callback', async (req, res) => {
     });
 
     // Intercambio del code por token corto
-    const { data } = await axios.post('https://api.instagram.com/oauth/access_token', payload);
+    const { data } = await axios.post(
+      'https://api.instagram.com/oauth/access_token',
+      payload,
+      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+    );
 
     // Opcional: convertir a token largo (60 días)
     const longToken = await axios.get('https://graph.instagram.com/access_token', {
